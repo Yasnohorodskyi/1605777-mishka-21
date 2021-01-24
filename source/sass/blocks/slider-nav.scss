@@ -22,13 +22,14 @@
 
   &:focus {
     outline: none;
-  }
-
-  &:hover path {
     opacity: 0.6;
   }
 
-  &:active path {
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:active {
     opacity: 0.3;
   }
 }

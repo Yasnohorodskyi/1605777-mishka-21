@@ -165,14 +165,30 @@
 
 .contacts__data-email-link {
   color: $primary-color;
-  border-bottom: 1px solid $style-color;
   height: 30px;
-  max-width: 183px;
+  width: 182px;
   display: inline-block;
   vertical-align: middle;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    min-width: 183px;
+    height: 1px;
+    bottom: 4px;
+    left: 0;
+    background-color: $style-color;
+
+    @media (min-width: $tablet-width) {
+      width: 205px;
+      bottom: 0;
+    }
+  }
 
   @media (min-width: $tablet-width) {
-    max-width: 230px;
+    width: 230px;
   }
 
   @media (min-width: $desktop-width) {
@@ -181,11 +197,16 @@
 
   &:hover {
     color: $style-color-additional2;
-    border-bottom: 1px solid $style-color-additional2;
+
+    &::after {
+      background-color: $style-color-additional2;
+    }
   }
 
   &:active {
-    border-bottom: 1px solid $style-color-additional2-10;
+    &::after {
+      background-color: $style-color-additional2-10;
+    }
   }
 }
 
@@ -196,6 +217,13 @@
   text-align: center;
   margin: 0 auto 42px auto;
   position: relative;
+  background-size: 100%;
+  background-image: url("../img/map-mobile.png");
+  background-repeat: no-repeat;
+
+  @media (min-resolution: 2dppx) {
+    background-image: url("../img/map-mobile@2x.png");
+  }
 
   &::after {
     content: "";
@@ -212,6 +240,12 @@
     width: 768px;
     height: 457px;
     margin-bottom: 55px;
+    background-image: url("../img/map-tablet.png");
+    background-repeat: no-repeat;
+
+    @media (min-resolution: 2dppx) {
+      background-image: url("../img/map-tablet@2x.png");
+    }
 
     &::after {
       left: 363px;
@@ -224,6 +258,12 @@
     height: 457px;
     order: 100;
     margin: 0;
+    background-image: url("../img/map-desktop.png");
+    background-repeat: no-repeat;
+
+    @media (min-resolution: 2dppx) {
+      background-image: url("../img/map-desktop@2x.png");
+    }
 
     &::after {
       left: 239px;
@@ -232,10 +272,11 @@
   }
 }
 
-.contacts__map-link img {
+.contacts__map {
   width: 320px;
   height: 455px;
   display: block;
+  border: none;
 
   @media (min-width: $tablet-width) {
     width: 768px;
